@@ -2,7 +2,7 @@
 
 import React from "react";
 import { RadarChart, PolarAngleAxis, PolarGrid, Radar } from 'recharts';
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./ui/chart";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 
 export default function RadarchartChart(props) {
   return (

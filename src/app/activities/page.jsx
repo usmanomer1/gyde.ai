@@ -12,8 +12,9 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
 import { ChartTooltipContent, ChartTooltip, ChartContainer } from "@/components/ui/chart"
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart, CartesianGrid, XAxis, Bar, BarChart, Line, LineChart } from "recharts"
-import BarchartChart from "./barchartchart"
-import RadarchartChart from "./radarchartChart"
+import RadarchartChart from "./components/radarchartChart"
+import BarchartChart from "./components/barchartchart"
+import { NavBar } from "@/components/navbar"
 
 
 
@@ -26,38 +27,8 @@ export default async function Activities() {
             <LogInIcon className="h-8 w-8" />
             <span className="text-2xl font-bold text-card-foreground">gyde.ai</span>
           </div>
-          <nav className="hidden space-x-4 md:flex">
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Home
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Essays
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Colleges
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Activities
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Planner
-            </Link>
-          </nav>
+          <NavBar className=" md:flex"/>
+
         </div>
         <div className="flex items-center space-x-4">
           <Button variant="ghost" className="rounded-full text-card-foreground">

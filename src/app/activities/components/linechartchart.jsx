@@ -1,7 +1,7 @@
 'use client'
 
 import React from "react";
-import { ChartContainer, ChartTooltip, ChartTooltipContent } from "./ui/chart";
+import { ChartContainer, ChartTooltip, ChartTooltipContent } from '@/components/ui/chart';
 import { LineChart, CartesianGrid, XAxis, Line } from "recharts/types";
 
 export default function LinechartChart(props) {
