@@ -12,8 +12,12 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
 import { ChartTooltipContent, ChartTooltip, ChartContainer } from "@/components/ui/chart"
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart, CartesianGrid, XAxis, Bar, BarChart, Line, LineChart } from "recharts"
+import BarchartChart from "./barchartchart"
+import RadarchartChart from "./radarchartChart"
 
-export function activities() {
+
+
+export default async function Activities() {
   return (
     (<div className="min-h-screen bg-background">
       <header className="flex items-center justify-between p-4 bg-card shadow-md">
@@ -213,43 +217,6 @@ export function activities() {
   );
 }
 
-function BarchartChart(props) {
-  return (
-    (<div {...props}>
-      <ChartContainer
-        config={{
-          desktop: {
-            label: "Desktop",
-            color: "hsl(var(--chart-1))",
-          },
-        }}
-        className="min-h-[300px]">
-        <BarChart
-          accessibilityLayer
-          data={[
-            { month: "January", desktop: 186 },
-            { month: "February", desktop: 305 },
-            { month: "March", desktop: 237 },
-            { month: "April", desktop: 73 },
-            { month: "May", desktop: 209 },
-            { month: "June", desktop: 214 },
-          ]}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => value.slice(0, 3)} />
-          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-          <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
-        </BarChart>
-      </ChartContainer>
-    </div>)
-  );
-}
-
-
 function BellIcon(props) {
   return (
     (<svg
@@ -291,49 +258,6 @@ function FilePenIcon(props) {
 }
 
 
-function LinechartChart(props) {
-  return (
-    (<div {...props}>
-      <ChartContainer
-        config={{
-          desktop: {
-            label: "Desktop",
-            color: "hsl(var(--chart-1))",
-          },
-        }}>
-        <LineChart
-          accessibilityLayer
-          data={[
-            { month: "January", desktop: 186 },
-            { month: "February", desktop: 305 },
-            { month: "March", desktop: 237 },
-            { month: "April", desktop: 73 },
-            { month: "May", desktop: 209 },
-            { month: "June", desktop: 214 },
-          ]}
-          margin={{
-            left: 12,
-            right: 12,
-          }}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            axisLine={false}
-            tickMargin={8}
-            tickFormatter={(value) => value.slice(0, 3)} />
-          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-          <Line
-            dataKey="desktop"
-            type="natural"
-            stroke="var(--color-desktop)"
-            strokeWidth={2}
-            dot={false} />
-        </LineChart>
-      </ChartContainer>
-    </div>)
-  );
-}
 
 
 function LogInIcon(props) {
@@ -357,35 +281,7 @@ function LogInIcon(props) {
 }
 
 
-function RadarchartChart(props) {
-  return (
-    (<div {...props}>
-      <ChartContainer
-        config={{
-          desktop: {
-            label: "Desktop",
-            color: "hsl(var(--chart-1))",
-          },
-        }}
-        className="mx-auto aspect-square max-h-[250px]">
-        <RadarChart
-          data={[
-            { month: "January", desktop: 186 },
-            { month: "February", desktop: 305 },
-            { month: "March", desktop: 237 },
-            { month: "April", desktop: 273 },
-            { month: "May", desktop: 209 },
-            { month: "June", desktop: 214 },
-          ]}>
-          <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-          <PolarAngleAxis dataKey="month" />
-          <PolarGrid />
-          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
-        </RadarChart>
-      </ChartContainer>
-    </div>)
-  );
-}
+
 
 
 function TrashIcon(props) {
