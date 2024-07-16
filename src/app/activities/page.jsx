@@ -16,19 +16,11 @@ import RadarchartChart from "./components/radarchartChart"
 import BarchartChart from "./components/barchartchart"
 import { NavBar } from "@/components/navbar"
 
-
-
-export default async function Activities() {
+export default  function Activities() {
   return (
     (<div className="min-h-screen bg-background">
       <main className="p-4 md:p-10">
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold text-card-foreground">Average Activity Strength:</h2>
-          <div className="flex items-center mt-2">
-            <Progress value={68} className="w-full h-4 bg-primary" />
-            <span className="ml-2 text-lg font-bold text-card-foreground">68%</span>
-          </div>
-        </section>
+        <AverageActivityStrength/>
         <section className="grid gap-4 md:grid-cols-3">
           <Card className="col-span-2">
             <CardHeader className="flex items-center justify-between">
@@ -170,6 +162,30 @@ export default async function Activities() {
   );
 }
 
+function AverageActivityStrength() {
+    return <section className="mb-8">
+        <h2 className="text-2xl font-bold text-card-foreground">Average Activity Strength:</h2>
+        <div className="flex items-center mt-2">
+            <Progress value={68} className="w-full h-4 bg-primary" />
+            <span className="ml-2 text-lg font-bold text-card-foreground">68%</span>
+        </div>
+    </section>
+}
+
+async function uploadActivity(){}
+async function uploadActivityPDF(){}
+async function uploadActivityPDF(){}
+async function generateFeedback(){}
+
+async function fetchUserActvities(){}
+async function fetchUserSummary(){}
+async function fetchActivityTimeSummary(){}
+async function fetchActivityCount(){}
+async function fetchCategoryBreakdown(){}
+
+
+
+
 
 
 
@@ -192,15 +208,6 @@ function FilePenIcon(props) {
     </svg>)
   );
 }
-
-
-
-
-
-
-
-
-
 
 function TrashIcon(props) {
   return (
