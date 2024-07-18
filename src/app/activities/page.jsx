@@ -12,66 +12,15 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs"
 import { Table, TableHeader, TableRow, TableHead, TableBody, TableCell } from "@/components/ui/table"
 import { ChartTooltipContent, ChartTooltip, ChartContainer } from "@/components/ui/chart"
 import { PolarAngleAxis, PolarGrid, Radar, RadarChart, CartesianGrid, XAxis, Bar, BarChart, Line, LineChart } from "recharts"
+import RadarchartChart from "./components/radarchartChart"
+import BarchartChart from "./components/barchartchart"
+import { NavBar } from "@/components/navbar"
 
-export function activities() {
+export default  function Activities() {
   return (
     (<div className="min-h-screen bg-background">
-      <header className="flex items-center justify-between p-4 bg-card shadow-md">
-        <div className="flex items-center space-x-4">
-          <div className="flex items-center space-x-2">
-            <LogInIcon className="h-8 w-8" />
-            <span className="text-2xl font-bold text-card-foreground">gyde.ai</span>
-          </div>
-          <nav className="hidden space-x-4 md:flex">
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Home
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Essays
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Colleges
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Activities
-            </Link>
-            <Link
-              href="#"
-              className="text-lg font-medium text-card-foreground"
-              prefetch={false}>
-              Planner
-            </Link>
-          </nav>
-        </div>
-        <div className="flex items-center space-x-4">
-          <Button variant="ghost" className="rounded-full text-card-foreground">
-            <BellIcon className="h-6 w-6" />
-          </Button>
-          <Button variant="ghost" className="rounded-full text-card-foreground">
-            <UserIcon className="h-6 w-6" />
-          </Button>
-        </div>
-      </header>
       <main className="p-4 md:p-10">
-        <section className="mb-8">
-          <h2 className="text-2xl font-bold text-card-foreground">Average Activity Strength:</h2>
-          <div className="flex items-center mt-2">
-            <Progress value={68} className="w-full h-4 bg-primary" />
-            <span className="ml-2 text-lg font-bold text-card-foreground">68%</span>
-          </div>
-        </section>
+        <AverageActivityStrength/>
         <section className="grid gap-4 md:grid-cols-3">
           <Card className="col-span-2">
             <CardHeader className="flex items-center justify-between">
@@ -213,61 +162,30 @@ export function activities() {
   );
 }
 
-function BarchartChart(props) {
-  return (
-    (<div {...props}>
-      <ChartContainer
-        config={{
-          desktop: {
-            label: "Desktop",
-            color: "hsl(var(--chart-1))",
-          },
-        }}
-        className="min-h-[300px]">
-        <BarChart
-          accessibilityLayer
-          data={[
-            { month: "January", desktop: 186 },
-            { month: "February", desktop: 305 },
-            { month: "March", desktop: 237 },
-            { month: "April", desktop: 73 },
-            { month: "May", desktop: 209 },
-            { month: "June", desktop: 214 },
-          ]}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            tickMargin={10}
-            axisLine={false}
-            tickFormatter={(value) => value.slice(0, 3)} />
-          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-          <Bar dataKey="desktop" fill="var(--color-desktop)" radius={8} />
-        </BarChart>
-      </ChartContainer>
-    </div>)
-  );
+function AverageActivityStrength() {
+    return <section className="mb-8">
+        <h2 className="text-2xl font-bold text-card-foreground">Average Activity Strength:</h2>
+        <div className="flex items-center mt-2">
+            <Progress value={68} className="w-full h-4 bg-primary" />
+            <span className="ml-2 text-lg font-bold text-card-foreground">68%</span>
+        </div>
+    </section>
 }
 
+async function uploadActivity(){}
+async function uploadActivityPDF(){}
+async function generateFeedback(){}
 
-function BellIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <path d="M6 8a6 6 0 0 1 12 0c0 7 3 9 3 9H3s3-2 3-9" />
-      <path d="M10.3 21a1.94 1.94 0 0 0 3.4 0" />
-    </svg>)
-  );
-}
+async function fetchUserActvities(){}
+async function fetchUserSummary(){}
+async function fetchActivityTimeSummary(){}
+async function fetchActivityCount(){}
+async function fetchCategoryBreakdown(){}
+
+
+
+
+
 
 
 function FilePenIcon(props) {
@@ -290,104 +208,6 @@ function FilePenIcon(props) {
   );
 }
 
-
-function LinechartChart(props) {
-  return (
-    (<div {...props}>
-      <ChartContainer
-        config={{
-          desktop: {
-            label: "Desktop",
-            color: "hsl(var(--chart-1))",
-          },
-        }}>
-        <LineChart
-          accessibilityLayer
-          data={[
-            { month: "January", desktop: 186 },
-            { month: "February", desktop: 305 },
-            { month: "March", desktop: 237 },
-            { month: "April", desktop: 73 },
-            { month: "May", desktop: 209 },
-            { month: "June", desktop: 214 },
-          ]}
-          margin={{
-            left: 12,
-            right: 12,
-          }}>
-          <CartesianGrid vertical={false} />
-          <XAxis
-            dataKey="month"
-            tickLine={false}
-            axisLine={false}
-            tickMargin={8}
-            tickFormatter={(value) => value.slice(0, 3)} />
-          <ChartTooltip cursor={false} content={<ChartTooltipContent hideLabel />} />
-          <Line
-            dataKey="desktop"
-            type="natural"
-            stroke="var(--color-desktop)"
-            strokeWidth={2}
-            dot={false} />
-        </LineChart>
-      </ChartContainer>
-    </div>)
-  );
-}
-
-
-function LogInIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <path d="M15 3h4a2 2 0 0 1 2 2v14a2 2 0 0 1-2 2h-4" />
-      <polyline points="10 17 15 12 10 7" />
-      <line x1="15" x2="3" y1="12" y2="12" />
-    </svg>)
-  );
-}
-
-
-function RadarchartChart(props) {
-  return (
-    (<div {...props}>
-      <ChartContainer
-        config={{
-          desktop: {
-            label: "Desktop",
-            color: "hsl(var(--chart-1))",
-          },
-        }}
-        className="mx-auto aspect-square max-h-[250px]">
-        <RadarChart
-          data={[
-            { month: "January", desktop: 186 },
-            { month: "February", desktop: 305 },
-            { month: "March", desktop: 237 },
-            { month: "April", desktop: 273 },
-            { month: "May", desktop: 209 },
-            { month: "June", desktop: 214 },
-          ]}>
-          <ChartTooltip cursor={false} content={<ChartTooltipContent />} />
-          <PolarAngleAxis dataKey="month" />
-          <PolarGrid />
-          <Radar dataKey="desktop" fill="var(--color-desktop)" fillOpacity={0.6} />
-        </RadarChart>
-      </ChartContainer>
-    </div>)
-  );
-}
-
-
 function TrashIcon(props) {
   return (
     (<svg
@@ -409,42 +229,22 @@ function TrashIcon(props) {
 }
 
 
-function UserIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <path d="M19 21v-2a4 4 0 0 0-4-4H9a4 4 0 0 0-4 4v2" />
-      <circle cx="12" cy="7" r="4" />
-    </svg>)
-  );
-}
-
-
 function XIcon(props) {
-  return (
-    (<svg
-      {...props}
-      xmlns="http://www.w3.org/2000/svg"
-      width="24"
-      height="24"
-      viewBox="0 0 24 24"
-      fill="none"
-      stroke="currentColor"
-      strokeWidth="2"
-      strokeLinecap="round"
-      strokeLinejoin="round">
-      <path d="M18 6 6 18" />
-      <path d="m6 6 12 12" />
-    </svg>)
-  );
-}
+    return (
+      (<svg
+        {...props}
+        xmlns="http://www.w3.org/2000/svg"
+        width="24"
+        height="24"
+        viewBox="0 0 24 24"
+        fill="none"
+        stroke="currentColor"
+        strokeWidth="2"
+        strokeLinecap="round"
+        strokeLinejoin="round">
+        <path d="M18 6 6 18" />
+        <path d="m6 6 12 12" />
+      </svg>)
+    );
+  }
 
