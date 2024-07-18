@@ -174,7 +174,6 @@ function AverageActivityStrength() {
 
 async function uploadActivity(){}
 async function uploadActivityPDF(){}
-async function uploadActivityPDF(){}
 async function generateFeedback(){}
 
 async function fetchUserActvities(){}
